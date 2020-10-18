@@ -1,8 +1,9 @@
 import React from 'react';
-import CanvasSquare from './CanvasSquare';
-import './CanvasRow.css';
-import { IRootState } from '../store';
 import { connect } from 'react-redux';
+import CanvasSquare from './CanvasSquare';
+import { IRootState } from '../store';
+
+import './CanvasRow.css';
 
 interface Props {
     rowIdx: number

@@ -1,9 +1,9 @@
 import React from "react";
-import CanvasRow from "./CanvasRow";
-import './Canvas.css';
-import { IRootState } from "../store";
 import { connect } from "react-redux";
+import CanvasRow from "./CanvasRow";
+import { IRootState } from "../store";
 
+import './Canvas.css';
 
 const mapStateToProps = ({ canvas }: IRootState) => {
     const { size } = canvas;
