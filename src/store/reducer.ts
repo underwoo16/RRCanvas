@@ -1,7 +1,8 @@
-import { ICanvasState } from "./types";
+import { ActionConstants, CanvasActions, ICanvasState } from "./types";
 
 const DEFAULT_SIZE = 8;
 const DEFAULT_COLOR = '#FFFFFF';
+const DEFAULT_FILL_COLOR = '#00FF00';
 
 const intitializeColors = (size: number, color: string) => {
     let colors: string[][] = [];
@@ -18,11 +19,17 @@ const intitializeColors = (size: number, color: string) => {
 
 const initialState: ICanvasState = {
     colors: intitializeColors(DEFAULT_SIZE, DEFAULT_COLOR),
-    size: DEFAULT_SIZE
+    size: DEFAULT_SIZE,
+    fillColor: DEFAULT_FILL_COLOR
 };
 
-const canvasReducer = (state: ICanvasState = initialState, action: any) => {
+const canvasReducer = (state: ICanvasState = initialState, action: CanvasActions) => {
         switch (action.type) {
+            case ActionConstants.FILL_SQUARE:
+                const newState = { ...state };
+                const { row, column } = action.payload.square;
+                newState.colors[row][column] = newState.fillColor;
+                return newState
             default:
                 return state;
         }
