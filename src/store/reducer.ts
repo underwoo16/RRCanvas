@@ -25,10 +25,14 @@ const initialState: ICanvasState = {
 
 const canvasReducer = (state: ICanvasState = initialState, action: CanvasActions) => {
         switch (action.type) {
-            case ActionConstants.FILL_SQUARE:
+            case ActionConstants.TOGGLE_SQUARE:
                 const newState = { ...state };
                 const { row, column } = action.payload.square;
-                newState.colors[row][column] = newState.fillColor;
+                let fillColor = newState.fillColor;
+                if (newState.colors[row][column] === newState.fillColor ) {
+                    fillColor = DEFAULT_COLOR;
+                }
+                newState.colors[row][column] = fillColor;
                 return newState
             default:
                 return state;
