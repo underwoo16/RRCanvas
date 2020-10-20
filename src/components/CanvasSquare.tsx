@@ -14,7 +14,7 @@ interface Props {
 
 const mapDispatchToProps = (dispatch: Dispatch<CanvasActions>) => {
     return {
-        toggleSquare: (square: ICanvasCoord) => dispatch(actions.toggleSquare(square))
+        squareToggled: (square: ICanvasCoord) => dispatch(actions.squareToggled(square))
     };
 };
 
@@ -25,11 +25,11 @@ const mapStateToProps = ({ canvas }: IRootState, { row, column }: Props) => {
 };
 type ReduxType = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>;;
 
-const CanvasSquare = ({ row, column, currentColor, toggleSquare } : ReduxType) => {
+const CanvasSquare = ({ row, column, currentColor, squareToggled } : ReduxType) => {
     const onSquareClick = useCallback(() => {
-            toggleSquare({ row, column });
+            squareToggled({ row, column });
         },
-        [row, column, toggleSquare]
+        [row, column, squareToggled]
     );
 
     return (

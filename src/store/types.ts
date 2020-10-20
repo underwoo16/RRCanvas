@@ -13,7 +13,8 @@ export interface ICanvasCoord {
 }
 
 export enum ActionConstants {
-    TOGGLE_SQUARE = 'TOGGLE_SQUARE'
+    squareToggled = 'squareToggled',
+    canvasCleared = 'canvasCleared'
 }
 
 

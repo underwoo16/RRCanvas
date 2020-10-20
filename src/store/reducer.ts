@@ -24,9 +24,9 @@ const initialState: ICanvasState = {
 };
 
 const canvasReducer = (state: ICanvasState = initialState, action: CanvasActions) => {
+        const newState = { ...state };
         switch (action.type) {
-            case ActionConstants.TOGGLE_SQUARE:
-                const newState = { ...state };
+            case ActionConstants.squareToggled:
                 const { row, column } = action.payload.square;
                 let fillColor = newState.fillColor;
                 if (newState.colors[row][column] === newState.fillColor ) {
@@ -34,6 +34,9 @@ const canvasReducer = (state: ICanvasState = initialState, action: CanvasActions
                 }
                 newState.colors[row][column] = fillColor;
                 return newState
+            case ActionConstants.canvasCleared:
+                newState.colors = intitializeColors(newState.size, DEFAULT_COLOR);
+                return newState;
             default:
                 return state;
         }
