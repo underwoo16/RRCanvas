@@ -37,6 +37,10 @@ const canvasReducer = (state: ICanvasState = initialState, action: CanvasActions
             case ActionConstants.canvasCleared:
                 newState.colors = intitializeColors(newState.size, DEFAULT_COLOR);
                 return newState;
+            case ActionConstants.sizeChanged:
+                newState.colors = intitializeColors(action.payload.size, DEFAULT_COLOR);
+                newState.size = action.payload.size;
+                return newState;
             default:
                 return state;
         }
